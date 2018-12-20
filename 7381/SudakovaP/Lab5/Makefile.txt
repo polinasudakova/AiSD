@@ -1,0 +1,24 @@
+
+CODE 	= ./source/
+OBJ 	= main.o randomized_binary_search_tree.o randomized_binary_search_tree_node.o
+EXE 	= randomized_binary_search_tree
+CXX		= g++
+CFLAGS 	= -std=c++14 -Wall -Wextra -c
+
+all: $(OBJ)
+	$(CXX) $(OBJ) -o $(EXE)
+
+main.o: $(CODE)main.cpp $(CODE)randomized_binary_search_tree.hpp
+	$(CXX) $(CFLAGS) $(CODE)main.cpp
+
+randomized_binary_search_tree.o:  $(CODE)randomized_binary_search_tree.cpp $(CODE)randomized_binary_search_tree.hpp
+	$(CXX) $(CFLAGS) $(CODE)randomized_binary_search_tree.cpp
+
+randomized_binary_search_tree_node.o: $(CODE)randomized_binary_search_tree_node.cpp $(CODE)randomized_binary_search_tree_node.hpp
+	$(CXX) $(CFLAGS) $(CODE)randomized_binary_search_tree_node.cpp
+
+clean:
+	rm $(OBJ) 
+
+cleanest:
+	rm $(OBJ) $(EXE) 
